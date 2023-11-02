@@ -80,7 +80,7 @@ const EffectButton = ({ title, toggleClassName }: { title: string, toggleClassNa
 
 function App () {
   const theme = useTheme()
-  const [drawerOpened, setDrawerOpened] = React.useState(false)
+  const [drawerOpened, setDrawerOpened] = React.useState(true)
   const [classNames, setClassNames] = React.useState('')
   const [color, setColor] = React.useState('blue')
   const [clicks, setClicks] = React.useState(0)
@@ -113,7 +113,6 @@ function App () {
     window.open(url, '_blank', 'noreferrer')
   }
   const parseColor = (color: string) => {
-    console.log(color);
     switch(color) {
       case 'blue':
         return '#2096f3';
@@ -177,20 +176,21 @@ function App () {
         <DrawerHeader/>
         <Box sx={{ overflow: 'auto', padding: theme.spacing(1), }}>
           <List>
-            <Box>
+            <Box mt={4}>
               <Typography variant="h5" component="h2">Effects</Typography>
-              <Box sx={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', gap: '5px' }}>
+              <Box mt={4}  sx={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', gap: '5px' }}>
                 <EffectButton toggleClassName={toggleClassName} title="Shadow"/>
                 <EffectButton toggleClassName={toggleClassName} title="Mirror"/>
                 <EffectButton toggleClassName={toggleClassName} title="Resize"/>
                 <EffectButton toggleClassName={toggleClassName} title="Spin"/>
               </Box>
             </Box>
-            <Box mt={2}>
+            <Box mt={4}>
               <Typography variant="h5" component="h2">JS Interop</Typography>
+              </Box>
+              <Box mt={4}>
               <FormControl fullWidth>
-              
-                   <InputLabel id="select-label">Color</InputLabel>
+                <InputLabel id="select-label">Color</InputLabel>
                 <Select
                   value={color}
                   label="Color"

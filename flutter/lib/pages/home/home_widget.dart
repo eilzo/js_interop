@@ -198,7 +198,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               controller: _model.textController,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.textController',
-                                Duration(milliseconds: 2000),
+                                Duration(milliseconds: 200),
                                 () async {
                                   FFAppState().update(() {
                                     FFAppState().text =
