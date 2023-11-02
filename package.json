@@ -1,5 +1,5 @@
 {
-  "name": "cra-flutter",
+  "name": "js-interop",
   "version": "0.0.0",
   "scripts": {
     "prestart": "rimraf node_modules/.cache/",
