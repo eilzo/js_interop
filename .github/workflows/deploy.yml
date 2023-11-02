@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.10'
+          cache: true
+      - name: React. Install dependencies
+        run: npm ci
+        working-directory: ./
+      - name: React. Build app
+        run: npm run build
+        working-directory: ./
+        env:
+          PUBLIC_URL: /js_interop/react
+      - name: React. Prepare app
+        run: mkdir -p ./build/react && cp -R ./build/. ./build/react/
+      - name: Expo. Install dependencies
+        run: npm ci
+        working-directory: ./expo-flutter
+      - name: Expo. Build web app
+        run: npm run build:web
+        working-directory: ./expo-flutter
+        env:
+          PUBLIC_URL: /js_interop/expo
+      - name: Expo. Prepare web app
+        run: npm run gh:prepare:web
+        working-directory: ./expo-flutter
+        env:
+          PUBLIC_URL: /js_interop/expo
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./build
+
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
