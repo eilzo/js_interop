@@ -35,9 +35,7 @@ jobs:
         run: npm run build
         working-directory: ./
         env:
-          PUBLIC_URL: /js_interop/react
-      - name: React. Prepare app
-        run: mkdir -p ./build/react && cp -R ./build/. ./build/react/
+          PUBLIC_URL: /js_interop
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
