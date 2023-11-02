@@ -119,9 +119,9 @@ function App () {
       case 'red': 
         return '#f44336';
       case 'green':
-        return '#1E3A55';
-      default:
         return '#4caf51';
+      default:
+        return '#2096f3';
     }
   }
   return (
@@ -178,7 +178,7 @@ function App () {
           <List>
             <Box mt={4}>
               <Typography variant="h5" component="h2">Effects</Typography>
-              <Box mt={4}  sx={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', gap: '5px' }}>
+              <Box mt={4} sx={{ display: 'flex', flexGrow: 1, flexWrap: 'wrap', gap: '5px' }}>
                 <EffectButton toggleClassName={toggleClassName} title="Shadow"/>
                 <EffectButton toggleClassName={toggleClassName} title="Mirror"/>
                 <EffectButton toggleClassName={toggleClassName} title="Resize"/>
