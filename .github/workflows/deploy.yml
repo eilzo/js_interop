@@ -38,19 +38,6 @@ jobs:
           PUBLIC_URL: /js_interop/react
       - name: React. Prepare app
         run: mkdir -p ./build/react && cp -R ./build/. ./build/react/
-      - name: Expo. Install dependencies
-        run: npm ci
-        working-directory: ./expo-flutter
-      - name: Expo. Build web app
-        run: npm run build:web
-        working-directory: ./expo-flutter
-        env:
-          PUBLIC_URL: /js_interop/expo
-      - name: Expo. Prepare web app
-        run: npm run gh:prepare:web
-        working-directory: ./expo-flutter
-        env:
-          PUBLIC_URL: /js_interop/expo
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
