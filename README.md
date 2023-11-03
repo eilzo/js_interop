@@ -1,12 +1,14 @@
-# cra-flutter
+# FlutterFlow meets React
+
+This repo is deployed to [https://eilzo.github.io/js_interop/](https://eilzo.github.io/js_interop/). 
+
+https://github.com/eilzo/js_interop/assets/134552781/b8ebeca2-81f1-4217-8b8d-8cc3a27d5b62
+
 
 This React project is a simple example of how React and Flutter
-web apps could be integrated, and have them interop.
+web apps can be integrated, and have them interop.
 
-This project bootstrapped with [Create React App](https://github.com/facebook/create-react-app)
-using `npm init react-app cra-flutter --template typescript` command.
-
-Deployed to [p-mazhnik.github.io/flutter-embedding/react](https://p-mazhnik.github.io/flutter-embedding/react).
+> Many thanks to https://github.com/flutter/samples/tree/main/web_embedding and p-mazhnik.github.io/flutter-embedding/react for the original React project.
 
 ## Points of Interest
 
