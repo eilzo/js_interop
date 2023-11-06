@@ -30,6 +30,9 @@ class _HomeWidgetState extends State<HomeWidget> {
     _model = createModel(context, () => HomeModel());
 
     _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -196,9 +199,10 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 16.0, 0.0, 16.0, 16.0),
                             child: TextFormField(
                               controller: _model.textController,
+                              focusNode: _model.textFieldFocusNode,
                               onChanged: (_) => EasyDebounce.debounce(
                                 '_model.textController',
-                                Duration(milliseconds: 200),
+                                Duration(milliseconds: 2000),
                                 () async {
                                   FFAppState().update(() {
                                     FFAppState().text =

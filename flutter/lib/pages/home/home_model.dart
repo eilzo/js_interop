@@ -19,6 +19,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
   // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
 
@@ -28,6 +29,7 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    textFieldFocusNode?.dispose();
     textController?.dispose();
   }
 
